@@ -34,13 +34,26 @@ public class NewsService {
             News news = News.builder()
                     .title(newsDTO.getTitle())
                     .content(newsDTO.getContent())
-                    .category(categoryService.findCategoryById(1L))
+                    .category(newsDTO.getCategory())
                     .views(0L)
                     .build();
             newsRepository.save(news);
             return true;
         } catch (Exception e) {
             throw new RuntimeException("Error during creating a new News");
+        }
+    }
+
+    public boolean saveEdited(NewsDTO newsDTO) {
+        try {
+            News news = findNewsById(newsDTO.getId());
+            news.setTitle(newsDTO.getTitle());
+            news.setContent(newsDTO.getContent());
+            news.setCategory(newsDTO.getCategory());
+            newsRepository.save(news);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException("Error during saving edited News");
         }
     }
 
@@ -60,6 +73,8 @@ public class NewsService {
             }
         }
         return newsList;
+//        return newsRepository.findNewsByCategory(category);
+
     }
 
     public NewsDTO createDTObyId(Long id) {

@@ -25,6 +25,7 @@ public class NewsController {
     public String newsView(Model model) {
         model.addAttribute("news", newsService.findAll());
         model.addAttribute("categories", categoryService.findAll());
+        System.out.println(categoryService.findAll().size());
         return "news";
     }
 
@@ -34,7 +35,9 @@ public class NewsController {
                                  Model model) {
         System.out.println(title);
         System.out.println(category);
-        model.addAttribute("user", newsService.findNewsByParams(title, category));
+        System.out.println(newsService.findNewsByParams(title, category));
+        model.addAttribute("news", newsService.findNewsByParams(title, category));
+        model.addAttribute("categories", categoryService.findAll());
         return "news";
     }
 
@@ -47,6 +50,7 @@ public class NewsController {
     @GetMapping("/new")
     public String newNews(Model model) {
         model.addAttribute("news", new NewsDTO());
+        model.addAttribute("categories", categoryService.findAll());
         return "news-new";
     }
 
@@ -64,8 +68,20 @@ public class NewsController {
     @GetMapping("/edit/{id}")
     public String editNews(@PathVariable Long id, Model model) {
         News news = newsService.findNewsById(id);
-        model.addAttribute("news", news);
+        model.addAttribute("oldNews", news);
+        model.addAttribute("newNews", new NewsDTO());
         return "news-edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String saveEditNews(@PathVariable Long id, NewsDTO newsDTO, Model model) {
+        if (newsService.saveEdited(newsDTO)) {
+            return "redirect:/news/" + id;
+        } else {
+            model.addAttribute("newNews", newsDTO);
+            return "news-edit";
+        }
+
     }
 
 }

@@ -17,11 +17,13 @@
     </tr>
     <tr>
       <td>Category</td>
-      <td th:object="${categories}">
-        <select>
-          <option th:each="category :${categories}"
-                  th:value="${category.getId()}"
-                  th:text="${category.getName()}"></option>
+      <td>
+        <select  name="category" style="height: 22px; width: 200px">
+          <option value="">---</option>
+          <option th:each="category : ${categories}"
+                  th:value="${category.id}"
+                  th:text="${category.name}">
+          </option>
         </select>
       </td>
     </tr>

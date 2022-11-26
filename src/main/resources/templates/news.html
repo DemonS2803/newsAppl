@@ -9,13 +9,13 @@
 <form action="/news" method="post" >
     <input type="text" name="title" value="type a part of title">
 <!--    Возникли проблемы с поиском по категории: не могу создать выпадающий список-->
-<!--    <select  name="category" style="height: 22px; width: 200px">-->
-<!--        <option value="">-&#45;&#45;</option>-->
-<!--        <option th:each="category : ${categories}"-->
-<!--                th:value="${category.getId()}"-->
-<!--                th:text="${category.getName()}">-->
-<!--        </option>-->
-<!--    </select>-->
+    <select  name="category" style="height: 22px; width: 200px">
+        <option value="">---</option>
+        <option th:each="category : ${categories}"
+                th:value="${category.id}"
+                th:text="${category.name}">
+        </option>
+    </select>
     <button type="submit">Search</button>
 </form>
 <table th:object="${news}" border="1">
@@ -23,5 +23,15 @@
         <td th:text="${news_.title}"></td>
     </tr>
 </table>
+<br>
+
+<!--Support table-->
+
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <td th:each="category : ${categories}"-->
+<!--            th:text="${category.name}"></td>-->
+<!--    </tr>-->
+<!--</table>-->
 </body>
 </html>
