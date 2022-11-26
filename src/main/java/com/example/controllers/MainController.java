@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class MainController {
 
-    @GetMapping (value = "/")
+    @GetMapping(value = "/")
     public String index() {
         return "index";
     }
 
+    @RequestMapping("/about")
+    public String about() {
+        return "about";
+    }
 }

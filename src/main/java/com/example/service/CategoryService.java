@@ -22,6 +22,11 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
+    public Category findCategoryById(Long id) {
+        return categoryRepository.findCategoryById(id);
+    }
+
+
     public boolean save(CategoryDTO categoryDTO) {
         try {
             Category category = Category.builder()

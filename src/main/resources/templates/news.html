@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>NewsSearch</title>
 </head>
 <body>
 <h1>Есть ли жизнь на Марсе???</h1><br><br>
-<form action="/news" method="post">
+<form action="/news" method="post" >
     <input type="text" name="title" value="type a part of title">
-    <select th:object="${categories}" name="category" style="height: 22px; width: 200px">
-        <option value="1" text="test"></option>
-        <option th:each="cat :${categories}"
-                th:value="${cat}"
-                th:text="${cat.name}">
-        </option>
-    </select>
+<!--    Возникли проблемы с поиском по категории: не могу создать выпадающий список-->
+<!--    <select  name="category" style="height: 22px; width: 200px">-->
+<!--        <option value="">-&#45;&#45;</option>-->
+<!--        <option th:each="category : ${categories}"-->
+<!--                th:value="${category.getId()}"-->
+<!--                th:text="${category.getName()}">-->
+<!--        </option>-->
+<!--    </select>-->
     <button type="submit">Search</button>
 </form>
 <table th:object="${news}" border="1">

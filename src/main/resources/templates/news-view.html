@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body th:object="${news}">
+  <h1 th:text="${news.title}"></h1>
+  <div th:text="${news.content}"></div>
+<br><br><br>
+  <a href="/">Main</a>
+  <a href="/news">News</a>
+<!--  <a th:href="/news/edit/+${news.id}">edit news</a>-->
+
+</body>
+</html>
