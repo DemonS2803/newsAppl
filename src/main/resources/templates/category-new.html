@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>CategoryNew</title>
+</head>
+<body>
+  <form th:action="@{/categories/new}" th:object="${category}" method="post">
+    <table border="1">
+      <tr>
+        <td>Name</td>
+        <td><input th:field="*{name}" type="text"></td>
+      </tr>
+    </table>
+    <button type="submit">Save</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/newsAppl
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver

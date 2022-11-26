@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>NewsSearch</title>
+</head>
+<body>
+<h1>Есть ли жизнь на Марсе???</h1><br><br>
+<form action="/news" method="post">
+    <input type="text" name="title" value="type a part of title">
+    <select th:object="${categories}" name="category" style="height: 22px; width: 200px">
+        <option value="1" text="test"></option>
+        <option th:each="cat :${categories}"
+                th:value="${cat}"
+                th:text="${cat.name}">
+        </option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+<table th:object="${news}" border="1">
+    <tr th:each="news_ :${news}">
+        <td th:text="${news_.title}"></td>
+    </tr>
+</table>
+</body>
+</html>
